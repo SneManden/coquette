@@ -6,15 +6,18 @@
     this.entities = new Coquette.Entities(this, game);
     this.runner = new Coquette.Runner(this);
     this.collider = new Coquette.Collider(this);
+    this.camera = new Coquette.Camera(this, {x:width/2, y:height/2}, {x:width, y:height});
 
     var self = this;
     new Coquette.Ticker(this, function(interval) {
       self.collider.update(interval);
       self.runner.update(interval);
+      self.camera.update(interval);
       if (game.update !== undefined) {
         game.update(interval);
       }
-
+      
+      self.camera.prep(self.renderer.getCtx(), backgroundColor);
       self.entities.update(interval)
       self.renderer.update(interval);
     });

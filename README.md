@@ -220,6 +220,33 @@ var Player = function() {
 };
 ```
 
+#### Camera
+
+Simulates a camera. Allows for following objects or set to desired position.
+
+To follow an object (e.g. `player`) or a position, use:
+
+```javascript
+coquette.camera.followObj(player); // Follows player
+coquette.camera.followPos({x: 100, y: 100}); // Set camera position to (100, 100)
+```
+
+It also accepts a second argument: speed.
+If provided, the camera will move to the desired position/object - else,
+it will move instantly.
+
+```javascript
+coquette.camera.followObj(player, 10); // Follows player, with camera speed of 10
+coquette.camera.followPos({x: 100, y: 100}, 5); // Move/follow pos (100,100) with speed of 5
+```
+
+A shaking effect is also implemented. `shake()` takes to arguments: steps and force:
+
+```javascript
+// Shakes the camera for 60 steps (at 60 FPS = 1 sec) with force of 10
+coquette.camera.shake(60, 10);
+```
+
 ## Run the tests
 
 Install Node.js and npm: https://github.com/isaacs/npm
