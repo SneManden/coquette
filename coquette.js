@@ -625,7 +625,7 @@
       // Clear rect
       ctx.clearRect(this.borders.left, this.borders.top, this.size.x, this.size.y);
       // Draw background (moved from Renderer)
-      ctx.fillStyle = this.backgroundColor;
+      ctx.fillStyle = backgroundColor;
       ctx.fillRect(this.borders.left, this.borders.top, this.size.x, this.size.y);
     },
 
