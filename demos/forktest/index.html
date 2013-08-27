@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Forktest</title>
+        <style type="text/css">
+        html, body {
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            font-size: 12pt;
+            background: #000;
+            font-family: helvetica, arial, sans-serif;
+        }
+        #canvas {
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            margin: auto;
+        }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+
+        <!-- javascript -->
+        <script src="../../src/main.js"></script>
+        <script src="../../src/camera.js"></script>
+        <script src="../../src/runner.js"></script>
+        <script src="../../src/ticker.js"></script>
+        <script src="../../src/collider.js"></script>
+        <script src="../../src/entities.js"></script>
+        <script src="../../src/inputter.js"></script>
+        <script src="../../src/renderer.js"></script>
+        <!-- // <script src="../../coquette.js"></script> -->
+        <script src="./game.js"></script>
+        <script type="text/javascript">
+            // (function() {
+                var game = new Game('canvas', 800, 600, '#fff');
+                game.init();
+            // })();
+        </script>
+    </body>
+</html>
