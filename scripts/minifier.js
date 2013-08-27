@@ -12,7 +12,8 @@ var input = [
   src + 'runner.js',
   src + 'ticker.js',
   src + 'renderer.js',
-  src + 'entities.js'
+  src + 'entities.js',
+  src + 'camera.js'
 ];
 
 packer({
