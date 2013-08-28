@@ -8,7 +8,6 @@
         this.audioQueue = [];
         this.resources = {};
         this.cache = {};
-        this.supportedAudio = this.support();
     };
 
     Loader.prototype = {
@@ -113,16 +112,16 @@
 
         // TODO: use this to throw errors when trying to load
         //       in case of unsupported formats
-        support: function() {
-            var type = ['audio/mpeg', 'audio/ogg', 'audio/wav'],
-                supportedAudio = [];
-            for (var i=0; i<type.length; i++) {
-                var a = document.createElement('audio'),
-                    support = !!(a.canPlayType && a.canPlayType(type[i]).replace('/no/', ''));
-                supportedAudio.push({type:type[i], supported:support});
-            }
-            return supportedAudio;
-        },
+        // supportAudio: function() {
+        //     var type = ['audio/mpeg', 'audio/ogg', 'audio/wav'],
+        //         supportedAudio = [];
+        //     for (var i=0; i<type.length; i++) {
+        //         var a = document.createElement('audio'),
+        //             support = !!(a.canPlayType && a.canPlayType(type[i]).replace('/no/', ''));
+        //         supportedAudio.push({type:type[i], supported:support});
+        //     }
+        //     return supportedAudio;
+        // },
 
     };
 
