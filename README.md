@@ -247,6 +247,58 @@ A shaking effect is also implemented. `shake()` takes to arguments: steps and fo
 coquette.camera.shake(60, 10);
 ```
 
+#### Loader
+
+The loader module allows for preloading and caching of resources before
+starting your game. To use, make a method in your game object called `load()`,
+with a callback function, that will be triggered when `downloadAll` has finished:
+
+```javascript
+load: function(downloadQueue, callback) {
+  coquette.loader.addQueue(downloadQueue);
+  coquette.loader.downloadAll(callback);
+}
+```
+
+And when you initialize your game, e.g.:
+
+```javascript
+var downloadQueue = [
+  {name: 'somename1', 'path/to/image.png', type:'image'},
+  {name: 'somename2', 'path/to/audio.mp3', type:'audio'}
+];
+
+var game = new Game('canvas', 800, 600);
+game.load(downloadQueue, function() {
+  game.init(); // This fires when resources has been downloaded
+});
+```
+
+To use resources in your game, now use `coquette.loader.get()`:
+
+```javascript
+var image = coquette.loader.get('somename1');
+ctx.drawImage(image, 100, 100); // Draw image at (100,100)
+```
+
+There are also methods for keeping track of the number of resources currently
+loaded, e.g. to draw a loading bar (in your draw method of `game`):
+
+```javascript
+if (this.state == this.STATE.LOADING) { // Given, you keep track of states like this
+  var loaded = coquette.loader.loaded(),
+      total = coquette.loader.total(),
+      width = 196,
+      height = 26;
+      percentage = (loaded/total)*width;
+
+  ctx.strokeRect(100, 100, width+4, height+4);
+  ctx.fillRect(102, 102, percentage, height);
+}
+```
+
+For en example, take a look at `demos/forktest`.
+
 ## Run the tests
 
 Install Node.js and npm: https://github.com/isaacs/npm
