@@ -9,13 +9,14 @@
             margin: 0;
             padding: 0;
             font-size: 12pt;
-            background: #000;
+            background: #333;
             font-family: helvetica, arial, sans-serif;
         }
         #canvas {
             position: absolute;
             top: 0; right: 0; bottom: 0; left: 0;
             margin: auto;
+            border: 1px solid rgba(0,0,0,0.90);
         }
         </style>
     </head>
@@ -23,21 +24,24 @@
         <canvas id="canvas"></canvas>
 
         <!-- javascript -->
-        <script src="../../src/main.js"></script>
-        <script src="../../src/camera.js"></script>
-        <script src="../../src/runner.js"></script>
-        <script src="../../src/ticker.js"></script>
-        <script src="../../src/collider.js"></script>
-        <script src="../../src/entities.js"></script>
-        <script src="../../src/inputter.js"></script>
-        <script src="../../src/renderer.js"></script>
-        <!-- // <script src="../../coquette.js"></script> -->
+        <script src="../../coquette.js"></script>
         <script src="./game.js"></script>
-        <script type="text/javascript">
-            // (function() {
-                var game = new Game('canvas', 800, 600, '#fff');
-                game.init();
-            // })();
+        <script>
+        (function() {
+            var downloadQueue = [
+                {name: 'greyscale', path: 'greyscale.png', type: 'image'},
+                {name: 'titlemp3', path: 'title.mp3', type:'audio'}
+            ];
+
+            var game = new Game('canvas', 800, 600, '#fff');
+            game.load(downloadQueue, function() {
+                // Wait with proceeding, to display downloadbar for another
+                // 2 sec after it has finished
+                setTimeout(function() {
+                    game.init();
+                }, 2000);
+            });
+        })();
         </script>
     </body>
 </html>
